@@ -1,25 +1,31 @@
 body {
   min-height: 100vh;
-  min-width: 100vh;
   background-color: #12181f;
   color: white;
+  margin: 0;
+  font-family: sans-serif;
 }
 
 h1 {
   text-align: center;
   font-weight: 700;
   font-size: 50px;
+  margin: 20px 0;
 }
 
 p {
   text-align: center;
   font-size: 30px;
   font-weight: bold;
+  margin: 10px 0 20px;
 }
 
 .actions {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .actions button {
@@ -28,19 +34,21 @@ p {
   border-radius: 10px;
   background-color: #27ae60;
   color: white;
+  border: none;
+  cursor: pointer;
 }
 
 .grid-container {
   display: grid;
   justify-content: center;
   grid-gap: 16px;
-  grid-template-columns: repeat(6, 140px);
-  grid-template-rows: repeat(2, calc(140px / 2 * 3));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 
 .card {
-  width: 140px;
-  height: calc(140px / 2 * 3);
+  width: 100%;
+  max-width: 140px;
+  aspect-ratio: 2 / 3; /* lebih fleksibel daripada height kalkulasi */
   border-radius: 10px;
   background-color: white;
   position: relative;
@@ -81,4 +89,34 @@ p {
   );
   background-position: center center;
   background-size: cover;
+}
+
+/* MEDIA QUERIES UNTUK HP */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 35px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+
+  .actions button {
+    font-size: 20px;
+    padding: 6px 12px;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
+  }
+
+  .card {
+    max-width: 100px;
+  }
+
+  .front-image {
+    width: 40px;
+    height: 40px;
+  }
 }
